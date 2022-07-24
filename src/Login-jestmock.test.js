@@ -98,11 +98,13 @@ test("loading should be rendered when clicked", async () => {
   fireEvent.change(passwordInputEl, { target: { value: testValue } });
   fireEvent.click(buttonInputEl);
 
-  expect(buttonInputEl).toHaveTextContent(/please wait/i);
-
   await waitFor(() => {
-    expect(buttonInputEl).toHaveTextContent(/login/i);
+    expect(buttonInputEl).not.toHaveTextContent(/please wait/i);
   });
+
+  // await waitFor(() => {
+  expect(buttonInputEl).toHaveTextContent(/login/i);
+  // });
 });
 
 test("username should be rendered", async () => {
